@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Dragons - Premium Gaming Experience</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script>
+const gamesData = {
+    "PUBG": {
+        title: "PUBG Mobile",
+        background: "./Games/pubg/cover.jpg",
+        image: "./Games/pubg/photo.png",
+        buyCoins: [
+            { name: "60 UC", price: "40 EGP", image: "./Games/pubg/coins_.png" },
+            { name: "325 UC", price: "235 EGP", image: "./Games/pubg/coins_.png" },
+            { name: "660 UC", price: "465 EGP", image: "./Games/pubg/coins_.png" },
+            { name: "1800 UC", price: "1,150 EGP", image: "./Games/pubg/coins_.png" },
+            { name: "3850 UC", price: "2,280 EGP", image: "./Games/pubg/coins_.png" },
+            { name: "8100 UC", price: "4,570 EGP", image: "./Games/pubg/coins_.png" }
+        ],
+        specialOffers: [
+            { name: "Elite Pass", price: "$9.99", image: "./Games/pubg/pubg-elitepass.png" },
+            { name: "Royal Pass", price: "$24.99", image: "./Games/pubg/pubg-royalpass.png" }
+        ]
+    },
+    "FORTNITE": {
+    title: "Fortnite",
+    background: "./Games/fortnite/cover.jpg",
+    image: "./Games/fortnite/photo.jpg",
+    buyCoins: [
+        { name: "1000 V-Bucks", price: "380 EGP", image: "./Games/fortnite/coins.png" },
+        { name: "2800 V-Bucks", price: "810 EGP", image: "./Games/fortnite/coins.png" },
+        { name: "5000 V-Bucks", price: "1300 EGP", image: "./Games/fortnite/coins.png" },
+        { name: "13,500 V-Bucks", price: "2900 EGP", image: "./Games/fortnite/coins.png" }
+    ],
+    specialOffers: [
+        { name: "Battle Pass", price: "380 EGP", image: "./Games/fortnite/fortnite pass.png" },
+        { name: "Crew Pack", price: "250 EGP", image: "./Games/fortnite/fortnite crew.jpg" }
+    ]
+    },
+    "XBOX": {
+        title: "Xbox Live",
+        background: "./Games/xbox/cover.jpg",
+        image: "./Games/xbox/photo.jpg",
+        buyCoins: [
+            { name: "10 USD Gift Card", price: "520 EGP", image: "./Games/xbox/10.png" },
+            { name: "15 USD Gift Card", price: "770 EGP", image: "./Games/xbox/15.png" },
+            { name: "20 USD Gift Card", price: "1020 EGP", image: "./Games/xbox/20.png" },
+            { name: "25 USD Gift Card", price: "1270 EGP", image: "./Games/xbox/25.png" },
+            { name: "50 USD Gift Card", price: "2520 EGP", image: "./Games/xbox/50.png" },
+            { name: "100 USD Gift Card", price: "5020 EGP", image: "./Games/xbox/100.png" }
+        ],
+        specialOffers: [
+            { name: "1 Month Membership", price: "520 EGP", image: "./Games/xbox/coins_.png" },
+            { name: "3 Months Membership", price: "3020 EGP", image: "./Games/xbox/coins_.png" },
+            { name: "2 Months Membership", price: "1270 EGP", image: "./Games/xbox/coins_.png" },
+        ]
+    },
+    "EAFC": {
+        title: "EA Sports FC™ Mobile",
+        background: "./Games/eafc/cover.jpg",
+        image: "./Games/eafc/photo.jpg",
+        buyCoins: [
+            { name: "40 FC Points", price: "EGP19.99", image: "./Games/eafc/coins fifa.png" },
+            { name: "100 FC Points", price: "EGP49.99", image: "./Games/eafc/coins fifa.png" },
+            { name: "520 FC Points", price: "EGP249.99", image: "./Games/eafc/coins fifa.png" },
+            { name: "1070 FC Points", price: "EGP499.99", image: "./Games/eafc/coins fifa.png" },
+            { name: "2200 FC Points", price: "EGP999.99", image: "./Games/eafc/coins fifa.png" },
+            { name: "39 Silver", price: "EGP19.99", image: "./Games/eafc/coins silver.png" },
+            { name: "99 Silver", price: "EGP49.99", image: "./Games/eafc/coins silver.png" },
+            { name: "499 Silver", price: "EGP249.99", image: "./Games/eafc/coins silver.png" },
+            { name: "999 Silver", price: "EGP499.99", image: "./Games/eafc/coins silver.png" },
+            { name: "1999 Silver", price: "EGP999.99", image: "./Games/eafc/coins silver.png" }
+        ],
+        specialOffers: []
+    },
+    "PES": {
+        title: "eFootball",
+        background: "./Games/pes/cover.jpg",
+        image: "./Games/pes/photo.jpg",
+        buyCoins: [
+            { name: "130 Coins", price: "90 EGP", image: "./Games/pes/coins.png" },
+            { name: "300 Coins", price: "180 EGP", image: "./Games/pes/coins.png" },
+            { name: "750 Coins", price: "EGP349.99", image: "./Games/pes/coins.png" },
+            { name: "1,040 Coins", price: "EGP479.99", image: "./Games/pes/coins.png" },
+            { name: "2,130 Coins", price: "EGP949.99", image: "./Games/pes/coins.png" },
+            { name: "3,250 Coins", price: "EGP1,399.99", image: "./Games/pes/coins.png" },
+            { name: "5,700 Coins", price: "EGP2,399.99", image: "./Games/pes/coins.png" },
+            { name: "12,800 Coins", price: "EGP5,099.99", image: "./Games/pes/coins.png" }
+        ],
+        specialOffers: [
+            { name: "Starter Set 1 (50 Coins + DMF 83)", price: "50 EGP", image: "./Games/pes/coins_.png" },
+            { name: "Starter Set 2 (100 Coins + CF 83)", price: "125 EGP", image: "./Games/pes/coins_.png" }
+        ]
+    },
+    "MOBILE_LEGENDS": {
+        title: "Mobile Legends",
+        background: "./Games/mobile_legends/cover.jpg",
+        image: "./Games/mobile_legends/photo.jpg",
+        buyCoins: [
+            { name: "22 Diamonds", price: "40 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "11 Diamonds", price: "20 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "86 Diamonds", price: "70 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "172 Diamonds", price: "120 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "257 Diamonds", price: "175 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "343 Diamonds", price: "235 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "429 Diamonds", price: "300 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "514 Diamonds", price: "355 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "600 Diamonds", price: "420 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "706 Diamonds", price: "470 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "878 Diamonds", price: "590 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "963 Diamonds", price: "640 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "1135 Diamonds", price: "755 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "1220 Diamonds", price: "875 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "1412 Diamonds", price: "930 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "1584 Diamonds", price: "1070 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "2195 Diamonds", price: "1395 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "3073 Diamonds", price: "1970 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "3688 Diamonds", price: "2300 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "5532 Diamonds", price: "3470 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "6238 Diamonds", price: "3920 EGP", image: "./Games/mobile_legends/coins_.png" },
+            { name: "8433 Diamonds", price: "5295 EGP", image: "./Games/mobile_legends/coins_.png" }
+        ],
+        specialOffers: [
+            { name: "Weekly Pass", price: "75 EGP", image: "./Games/mobile_legends/weekly pass_.png" }
+        ]
+    },
+    "ROBLOX": {
+        title: "Roblox",
+        background: "./Games/roblox/cover_.jpg",
+        image: "./Games/roblox/photo.jpg",
+        buyCoins: [
+            { name: "40 Robux", price: "50 EGP", image: "./Games/roblox/coins.png" },
+            { name: "80 Robux", price: "75 EGP", image: "./Games/roblox/coins.png" },
+            { name: "400 Robux", price: "280 EGP", image: "./Games/roblox/coins.png" },
+            { name: "800 Robux", price: "500 EGP", image: "./Games/roblox/coins.png" },
+            { name: "1700 Robux", price: "920 EGP", image: "./Games/roblox/coins.png" },
+            { name: "4500 Robux", price: "2520 EGP", image: "./Games/roblox/coins.png" },
+            { name: "10,000 Robux", price: "4615 EGP", image: "./Games/roblox/coins.png" },
+            { name: "22,500 Robux", price: "9500 EGP", image: "./Games/roblox/coins.png" }
+        ],
+        specialOffers: []
+    },
+    "YALLA_LUDO": {
+        title: "Yalla Ludo",
+        background: "./Games/yalla_ludo/cover_.jpg",
+        image: "./Games/yalla_ludo/photo.png",
+        buyCoins: [
+            { name: "68,500 Gold", price: "130 EGP", image: "./Games/yalla_ludo/coins gold.png" },
+            { name: "223,700 Gold", price: "270 EGP", image: "./Games/yalla_ludo/coins gold.png" },
+            { name: "1,463,320 Gold", price: "495 EGP", image: "./Games/yalla_ludo/coins gold.png" },
+            { name: "1,687,020 Gold", price: "735 EGP", image: "./Games/yalla_ludo/coins gold.png" },
+            { name: "3,666,470 Gold", price: "1200 EGP", image: "./Games/yalla_ludo/coins gold.png" },
+            { name: "9,973,990 Gold", price: "2390 EGP", image: "./Games/yalla_ludo/coins gold.png" },
+            { name: "25,236,460 Gold", price: "4620 EGP", image: "./Games/yalla_ludo/coins gold.png" },
+            { name: "830 Diamonds", price: "130 EGP", image: "./Games/yalla_ludo/coins diamond_.png" },
+            { name: "2320 Diamonds", price: "270 EGP", image: "./Games/yalla_ludo/coins diamond_.png" },
+            { name: "5150 Diamonds", price: "495 EGP", image: "./Games/yalla_ludo/coins diamond_.png" },
+            { name: "7470 Diamonds", price: "735 EGP", image: "./Games/yalla_ludo/coins diamond_.png" },
+            { name: "13,580 Diamonds", price: "1200 EGP", image: "./Games/yalla_ludo/coins diamond_.png" },
+            { name: "27,640 Diamonds", price: "2390 EGP", image: "./Games/yalla_ludo/coins diamond_.png" },
+            { name: "55,800 Diamonds", price: "4620 EGP", image: "./Games/yalla_ludo/coins diamond_.png" }
+        ],
+        specialOffers: []
+    },
+    "FREE_FIRE": {
+        title: "Free Fire",
+        background: "./Games/free fire/cover.jpg",
+        image: "./Games/free fire/photo.jpg",
+        buyCoins: [
+            { name: "110 Diamonds", price: "50 EGP", image: "./Games/free fire/coins.png" },
+            { name: "231 Diamonds", price: "100 EGP", image: "./Games/free fire/coins.png" },
+            { name: "565 Diamonds", price: "250 EGP", image: "./Games/free fire/coins.png" },
+            { name: "1288 Diamonds", price: "500 EGP", image: "./Games/free fire/coins.png" }
+        ],
+        specialOffers: []
+    },
+    "PLAYSTATION": {
+        title: "PlayStation Card US (uae store)",
+        background: "./Games/playstation/cover.jpg",
+        image: "./Games/playstation/photo.jpg",
+        buyCoins: [
+            { name: "PSN Card 10 USD", price: "EGP478.80", image: "./Games/playstation/10.png" },
+            { name: "PSN Card 25 USD", price: "EGP1,197.00", image: "./Games/playstation/25.png" },
+            { name: "PSN Card 50 USD", price: "EGP2,394.00", image: "./Games/playstation/50.png" },
+            { name: "PSN Card 75 USD", price: "EGP3,591.00", image: "./Games/playstation/75.png" },
+            { name: "PSN Card 100 USD", price: "EGP4,788.00", image: "./Games/playstation/100.png" }
+        ],
+        specialOffers: []
+    }
+};
+
+function openGamePage(gameKey) {
+    const game = gamesData[gameKey];
+    if (!game) return;
+    localStorage.setItem("selectedGame", JSON.stringify(game));
+    window.location.href = "game.html";
+}
+
+</script>
+
+<body>
+    <!-- Header with Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+                <div class="dragon-icon1" styles="width = 50px,">
+                    <img src="./Games/logo/logo.png" alt="Iron Dragons Logo" style="display: flex; align-items: center; gap: 10px; width : 50px;>
+                    <i class="fas fa-dragon"></i>
+                </div>
+                Iron Dragons
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="sl.html"><i class="fas fa-smile-beam"></i> Happy Hour</a></li>
+                <li><a href="#games"><i class="fas fa-gamepad"></i> Games</a></li>
+                <li><a href="cart.html" id="cart-link"><i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="home-page">
+            <!-- Hero Section -->
+            <!-- Modern Gaming Hero Section -->
+            <!-- Hero Section -->
+            <section class="hero-section" style="background-image: url('./Games/logo/background.png'); 
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat; 
+                display: flex; 
+                align-items: center; 
+                justify-content: space-between; 
+                padding: 4rem 2rem;">
+
+                <!-- Hero Text -->
+                <div class="hero-content" style="flex: 1; max-width: 50%;">
+                    <h1 class="hero-title" data-text="IRON DRAGONS">IRON DRAGONS</h1>
+                    <p class="hero-subtitle">Get ready to level up your gaming experience!</p>
+                    
+                    <!-- Gaming Stats -->
+                    <div class="gaming-stats">
+                        <div class="stat-pill">
+                            <i class="stat-icon fas fa-users"></i>
+                            <span class="stat-text">1/2M+ PLAYERS</span>
+                        </div>
+                        <div class="stat-pill">
+                            <i class="stat-icon fas fa-trophy"></i>
+                            <span class="stat-text">PREMIUM TIER</span>
+                        </div>
+                        <div class="stat-pill">
+                            <i class="stat-icon fas fa-shield-alt"></i>
+                            <span class="stat-text">SECURED</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons Centered -->
+                    <div class="hero-cta" style="justify-content: center;">
+                        <a href="#games" class="cta-button cta-primary">
+                            <i class="fas fa-rocket"></i>
+                            Launch Gaming
+                        </a>
+                    </div>
+                </div>
+
+           </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Games Available</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="stat-number">1M+</div>
+                        <div class="stat-label">Gift Cards Sold</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Secure Transactions</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Games Section -->
+            <section class="games-section" id="games">
+                <div class="section-header">
+                    <h2 class="section-title">Popular Games</h2>
+                    <p class="section-subtitle">Discover the most popular games and get exclusive access to premium content, gift cards, and in-game currency</p>
+                </div>
+                <div class="games-grid">
+                    <!-- PUBG Card -->
+                    <div class="game-card" onclick="openGamePage('PUBG')">
+
+                        <div class="game-header">
+                            <div class="game-icon">
+                             <img src="./Games/pubg/photo.png" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>PUBG Mobile</h3>
+                                <span class="game-category">Battle Royale</span>
+                            </div>
+                        </div>
+                        <p class="game-description">Experience the ultimate battle royale on mobile. Get UC credits, premium battle passes, and exclusive weapon skins.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">Battle Royale</span>
+                            <span class="feature-tag">UC Credits</span>
+                            <span class="feature-tag">Premium Skins</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button" onclick="openGamePage('PUBG')">
+
+                                <i class="fas fa-play"></i>
+                                View Prices
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Free Fire Card -->
+                    <div class="game-card" onclick="openGamePage('FREE_FIRE')">
+                        <div class="game-header">
+                            <div class="game-icon">
+                                <img src="./Games/free fire/photo.jpg" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>Free Fire</h3>
+                                <span class="game-category">Battle Royale</span>
+                            </div>
+                        </div>
+                        <p class="game-description">Fast-paced 10-minute battle royale action. Purchase diamonds to unlock characters, pets, and exclusive bundles.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">10-Min Matches</span>
+                            <span class="feature-tag">Diamonds</span>
+                            <span class="feature-tag">Characters</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button">
+                                <i class="fas fa-play"></i>
+                                View Prices
+                            </button>
+                        
+                        </div>
+                    </div>
+
+                    <!-- Fortnite Card -->
+                    <div class="game-card" onclick="openGamePage('FORTNITE')">
+                        <div class="game-header">
+                            <div class="game-icon">
+                             <img src="./Games/fortnite/photo.jpg" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>Fortnite</h3>
+                                <span class="game-category">Battle Royale</span>
+                            </div>
+                        </div>
+                        <p class="game-description">Build, battle, and be the last one standing. Get V-Bucks for the Battle Pass and exclusive collaborations.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">Building</span>
+                            <span class="feature-tag">V-Bucks</span>
+                            <span class="feature-tag">Collaborations</span>
+                            <span class="feature-tag">Fortnite Events</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button">
+                                <i class="fas fa-play"></i>
+                                View Prices
+                            </button>
+                        
+                        </div>
+                    </div>
+
+                    <!-- Roblox Card -->
+                    <div class="game-card" onclick="openGamePage('ROBLOX')">
+                        <div class="game-header">
+                            <div class="game-icon">
+                             <img src="./Games/roblox/photo.jpg" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>Roblox</h3>
+                                <span class="game-category">Creative Platform</span>
+                            </div>
+                        </div>
+                        <p class="game-description">Create, play, and share with millions worldwide. Purchase Robux for avatar customization and game passes.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">User-Generated</span>
+                            <span class="feature-tag">Robux</span>
+                            <span class="feature-tag">Avatar Custom</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button">
+                                <i class="fas fa-play"></i>
+                                View Prices
+                            </button>
+                        
+                        </div>
+                    </div>
+
+                    <!-- PS Gift Cards -->
+                    <div class="game-card" onclick="openGamePage('PLAYSTATION')">
+                        <div class="game-header">
+                            <div class="game-icon">
+                             <img src="./Games/playstation/photo.jpg" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>PlayStation Cards</h3>
+                                <span class="game-category">Console Gaming</span>
+                            </div>
+                        </div>
+                        <p class="game-description">PlayStation Store credits for games, DLCs, movies, and exclusive content on PS4 and PS5 consoles.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">PS4 & PS5</span>
+                            <span class="feature-tag">Instant Delivery</span>
+                            <span class="feature-tag">No Expiry</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button">
+                                <i class="fas fa-credit-card"></i>
+                                View Cards
+                            </button>
+                        
+                        </div>
+                    </div>
+
+                    <!-- Xbox Gift Cards -->
+                    <div class="game-card" onclick="openGamePage('XBOX')">
+                        <div class="game-header">
+                            <div class="game-icon">
+                             <img src="./Games/xbox/photo.jpg" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>Xbox Gift Cards</h3>
+                                <span class="game-category">Console Gaming</span>
+                            </div>
+                        </div>
+                        <p class="game-description">Microsoft Store and Xbox credits for games, Game Pass subscriptions, and digital content across all Xbox platforms.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">Game Pass</span>
+                            <span class="feature-tag">Xbox Series</span>
+                            <span class="feature-tag">PC Compatible</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button">
+                                <i class="fas fa-credit-card"></i>
+                                View Cards
+                            </button>
+                        
+                        </div>
+                    </div>
+
+                    <!-- Mobile Legends -->
+                    <div class="game-card" onclick="openGamePage('MOBILE_LEGENDS')">
+                        <div class="game-header">
+                            <div class="game-icon">
+                             <img src="./Games/mobile_legends/photo.jpg" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>Mobile Legends</h3>
+                                <span class="game-category">MOBA</span>
+                            </div>
+                        </div>
+                        <p class="game-description">Epic 5v5 MOBA battles on mobile. Get diamonds to unlock heroes, skins, and participate in exclusive events.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">5v5 MOBA</span>
+                            <span class="feature-tag">Diamonds</span>
+                            <span class="feature-tag">100+ Heroes</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button">
+                                <i class="fas fa-play"></i>
+                                View Prices
+                            </button>
+                        
+                        </div>
+                    </div>
+
+                    <!-- FIFA Mobile -->
+                    <div class="game-card" onclick="openGamePage('EAFC')">
+                        <div class="game-header">
+                            <div class="game-icon">
+                             <img src="./Games/EAFC/photo.jpg" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>FIFA Mobile</h3>
+                                <span class="game-category">Sports</span>
+                            </div>
+                        </div>
+                        <p class="game-description">The world's most popular football game on mobile. Purchase FIFA Points to build your ultimate team.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">Ultimate Team</span>
+                            <span class="feature-tag">FIFA Points</span>
+                            <span class="feature-tag">Live Events</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button">
+                                <i class="fas fa-play"></i>
+                                View Prices
+                            </button>
+                        
+                        </div>
+                    </div>
+
+                    <!-- More games -->
+                    <div class="game-card" onclick="openGamePage('YALLA_LUDO')">
+                        <div class="game-header">
+                            <div class="game-icon">
+                             <img src="./Games/yalla_ludo/photo.png" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>Yalla Ludo</h3>
+                                <span class="game-category">Board Game</span>
+                            </div>
+                        </div>
+                        <p class="game-description">Classic Ludo with modern social features and voice chat. Purchase coins for premium rooms and tournaments.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">Voice Chat</span>
+                            <span class="feature-tag">Tournaments</span>
+                            <span class="feature-tag">Social Play</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button">
+                                <i class="fas fa-play"></i>
+                                View Prices
+                            </button>
+                        
+                        </div>
+                    </div>
+
+                    <div class="game-card" onclick="openGamePage('PES')">
+                        <div class="game-header">
+                            <div class="game-icon">
+                             <img src="./Games/pes/photo.jpg" alt="Iron Dragons Logo" style="width :70px;">
+                            </div>
+                            <div class="game-info">
+                                <h3>eFootball PES</h3>
+                                <span class="game-category">Sports</span>
+                            </div>
+                        </div>
+                        <p class="game-description">Realistic football simulation with legendary players. Get myClub coins to build your dream team.</p>
+                        <div class="game-features">
+                            <span class="feature-tag">myClub Mode</span>
+                            <span class="feature-tag">Legend Players</span>
+                            <span class="feature-tag">Realistic AI</span>
+                        </div>
+                        <div class="game-actions">
+                            <button class="play-button">
+                                <i class="fas fa-play"></i>
+                                View Prices
+                            </button>
+                        
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section" id="features">
+                <div class="features-container">
+                    <div class="section-header">
+                        <h2 class="section-title">Why Choose Iron Dragons?</h2>
+                        <p class="section-subtitle">Experience gaming like never before with our premium features and unmatched service quality</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3 class="feature-title">Instant Delivery</h3>
+                            <p class="feature-description">Get your game credits and gift cards delivered instantly to your email. No waiting, just pure gaming excitement.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="feature-title">100% Secure</h3>
+                            <p class="feature-description">Bank-level encryption and secure payment processing ensure your transactions are always protected.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3 class="feature-title">24/7 Support</h3>
+                            <p class="feature-description">Our dedicated gaming support team is available around the clock to help you with any questions or issues.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <h3 class="feature-title">Best Prices</h3>
+                            <p class="feature-description">Competitive pricing with regular discounts and exclusive deals for our loyal gaming community.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="feature-title">Premium Quality</h3>
+                            <p class="feature-description">Only authentic, verified game credits and gift cards from official sources. Quality guaranteed.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter Section -->
+           
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-grid">
+                        <div class="footer-section">
+                            <h3><img src="./Games/logo/logo.png" alt="Iron Dragons Logo" style="width: 40px; height: 40px;"> Iron Dragons</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Your ultimate destination for premium gaming experiences and digital entertainment.</p>
+                            <style>
+                                .social-links {
+                                    display: flex;
+                                    gap: 10px;
+                                }
+                                .social-links a {
+                                    position: relative;
+                                    color: #fff;
+                                    text-decoration: none;
+                                    font-size: 20px;
+                                }
+                                .social-links a .tooltip {
+                                    visibility: hidden;
+                                    opacity: 0;
+                                    background: #333;
+                                    color: #fff;
+                                    padding: 5px 8px;
+                                    border-radius: 5px;
+                                    font-size: 14px;
+                                    position: absolute;
+                                    bottom: 125%; /* show above icon */
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    white-space: nowrap;
+                                    transition: opacity 0.3s;
+                                }
+                                .social-links a:hover .tooltip {
+                                    visibility: visible;
+                                    opacity: 1;
+                                }
+                                </style>
+
+                                <div class="social-links">
+                                    <a href="https://www.facebook.com/share/1JmMjtWHoo/" target="_blank" rel="noopener">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                    <a href="https://wa.me/201050784878" target="_blank" rel="noopener">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                    <a href="tel:+201040391272">
+                                        <i class="fas fa-phone"></i>
+                                        <span class="tooltip">+20 104 039 1272</span>
+                                    </a>
+                                </div>
+
+
+                        </div>
+                        <div class="footer-section">
+                            <h3>Quick Links</h3>
+                            <ul class="footer-links">
+                                <li><a href="#games"><i class="fas fa-gamepad"></i> All Games</a></li>
+                                </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h3>Support</h3>
+                            <ul class="footer-links">
+                                <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <a href="https://www.linkedin.com/in/abdul-halim-aldib-955a73317/" style="color: #fff; text-decoration:none;"> 
+                            <p>&copy; 2025 Iron Dragons. All rights reserved. | Powered by Abdulhalim aldib.</p>
+                            <p>click to know more about Abdulhalim</p>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Individual Game Pages -->
+        <div id="game-pages">
+            <!-- Game pages will be dynamically created here -->
+        </div>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Enhanced game data with more details
+        const gameData = {
+            'PUBG': {
+                title: "PUBG Mobile",
+                background: "./Games/logo/background.png",
+                image: "./Games/logo/logo.png",
+                icon: 'fas fa-crosshairs',
+                category: 'Battle Royale',
+                description: 'PlayerUnknown\'s Battlegrounds Mobile delivers the ultimate battle royale experience on your mobile device. Engage in intense 100-player battles, customize your character with premium outfits, and dominate the battlefield with exclusive weapon skins.',
+                features: [
+                    'Epic 100-Player Battles',
+                    'Multiple Game Modes',
+                    'Premium Battle Passes',
+                    'Exclusive Weapon Skins',
+                    'Character Customization',
+                    'Seasonal Events & Tournaments',
+                    'Team-Based Gameplay',
+                    'Regular Content Updates'
+                ],
+                pricing: {
+                    'UC 60': '$0.99',
+                    'UC 325': '$4.99',
+                    'UC 660': '$9.99',
+                    'UC 1800': '$24.99',
+                    'UC 3850': '$49.99',
+                    'UC 8100': '$99.99'
+                },
+                systemReqs: ['Android 5.1.1+', 'iOS 9.0+', '2GB RAM', '2GB Storage'],
+                rating: 4.2,
+                downloads: '1B+',
+                developer: 'KRAFTON, Inc.'
+            },
+            'FREE FIRE': {
+                icon: 'fas fa-fire',
+                category: 'Battle Royale',
+                description: 'Garena Free Fire is the ultimate survival shooter game available on mobile. Each 10-minute game places you on a remote island where you are pit against 49 other players, all seeking survival.',
+                features: [
+                    'Fast 10-Minute Matches',
+                    'Unique Character System',
+                    'Pet Companions',
+                    'Custom Weapons & Skins',
+                    'Guild Wars',
+                    'Ranked Mode',
+                    'Weekly Tournaments',
+                    'Voice Chat Integration'
+                ],
+                pricing: {
+                    'Diamonds 100': '$0.99',
+                    'Diamonds 520': '$4.99',
+                    'Diamonds 1080': '$9.99',
+                    'Diamonds 2200': '$19.99',
+                    'Diamonds 5600': '$49.99',
+                    'Diamonds 11000': '$99.99'
+                },
+                systemReqs: ['Android 4.0.3+', 'iOS 8.0+', '1GB RAM', '1GB Storage'],
+                rating: 4.1,
+                downloads: '1B+',
+                developer: 'Garena International I'
+            }
+            // Add more games data...
+        };
+
+        // Show individual game page with enhanced content
+        function showGamePage(gameName) {
+            const homePage = document.getElementById('home-page');
+            const gamePagesContainer = document.getElementById('game-pages');
+            const gameInfo = gameData[gameName] || getDefaultGameData(gameName);
+
+            homePage.style.display = 'none';
+
+            const gamePageHTML = `
+                <div class="game-page active">
+                    <div class="game-hero">
+                        <button class="back-button" onclick="goBackHome()">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Games
+                        </button>
+                        <div class="game-page-header">
+                            <div class="game-page-icon">
+                                <i class="${gameInfo.icon}"></i>
+                            </div>
+                            <div>
+                                <h1 class="game-page-title">${gameName}</h1>
+                                <p style="color: var(--text-secondary); font-size: 1.2rem; margin-top: 0.5rem;">
+                                    <i class="fas fa-tag"></i> ${gameInfo.category}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="game-details-container">
+                        <div class="game-main-content">
+                            <section style="margin-bottom: 3rem;">
+                                <h2 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.8rem;">
+                                    <i class="fas fa-info-circle"></i> About ${gameName}
+                                </h2>
+                                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                                    ${gameInfo.description}
+                                </p>
+                            </section>
+
+                            <section style="margin-bottom: 3rem;">
+                                <h2 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.8rem;">
+                                    <i class="fas fa-star"></i> Key Features
+                                </h2>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                                    ${gameInfo.features.map(feature => `
+                                        <div style="background: rgba(111, 66, 193, 0.1); padding: 1rem; border-radius: 12px; border: 1px solid var(--border-primary);">
+                                            <i class="fas fa-check-circle" style="color: var(--accent-success); margin-right: 8px;"></i>
+                                            ${feature}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </section>
+
+                            <section>
+                                <h2 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.8rem;">
+                                    <i class="fas fa-credit-card"></i> Available Packages
+                                </h2>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                                    ${Object.entries(gameInfo.pricing).map(([package, price]) => `
+                                        <div style="background: var(--card-bg); border: 2px solid var(--border-primary); border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent-primary)'" onmouseout="this.style.borderColor='var(--border-primary)'">
+                                            <h4 style="color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">${package}</h4>
+                                            <p style="color: var(--text-primary); font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem;">${price}</p>
+                                            <button style="width: 100%; background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary)); color: white; border: none; padding: 0.8rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                                                <i class="fas fa-shopping-cart"></i> Buy Now
+                                            </button>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="game-sidebar">
+                            <div style="text-align: center; margin-bottom: 2rem;">
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1rem;">
+                                    <div style="color: var(--accent-warning);">
+                                        ${Array(Math.floor(gameInfo.rating)).fill('★').join('')}${Array(5 - Math.floor(gameInfo.rating)).fill('☆').join('')}
+                                    </div>
+                                    <span style="color: var(--text-primary); font-weight: 600;">${gameInfo.rating}/5</span>
+                                </div>
+                                <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">
+                                    <i class="fas fa-download"></i> ${gameInfo.downloads} Downloads
+                                </p>
+                                <p style="color: var(--text-secondary);">
+                                    <i class="fas fa-user"></i> ${gameInfo.developer}
+                                </p>
+                            </div>
+
+                            <div style="margin-bottom: 2rem;">
+                                <h3 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.2rem;">
+                                    <i class="fas fa-mobile-alt"></i> System Requirements
+                                </h3>
+                                <ul style="list-style: none; padding: 0;">
+                                    ${gameInfo.systemReqs.map(req => `
+                                        <li style="color: var(--text-secondary); margin-bottom: 0.5rem; padding: 0.5rem; background: rgba(111, 66, 193, 0.05); border-radius: 6px;">
+                                            <i class="fas fa-check" style="color: var(--accent-success); margin-right: 8px;"></i>
+                                            ${req}
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+
+                            <button style="width: 100%; background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary)); color: white; border: none; padding: 1.2rem; border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-bottom: 1rem; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <i class="fas fa-play"></i> Play Now
+                            </button>
+                            
+                            <button style="width: 100%; background: transparent; color: var(--text-primary); border: 2px solid var(--border-primary); padding: 1rem; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.color='var(--accent-primary)'" onmouseout="this.style.borderColor='var(--border-primary)'; this.style.color='var(--text-primary)'">
+                                <i class="fas fa-heart"></i> Add to Wishlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            gamePagesContainer.innerHTML = gamePageHTML;
+            window.scrollTo(0, 0);
+        }
+
+        // Default game data generator for games not in detailed data
+        function getDefaultGameData(gameName) {
+            const defaults = {
+                'XBOX GIFT CARDS': {
+                    icon: 'fab fa-xbox',
+                    category: 'Console Gaming',
+                    description: 'Microsoft Store and Xbox gift cards provide access to thousands of games, movies, TV shows, and apps across Xbox consoles and Windows devices. Perfect for gamers who want the freedom to choose their next adventure.',
+                    features: ['Xbox Game Pass Compatible', 'Backwards Compatible Games', 'Digital Movies & TV', 'Windows Store Apps', 'Xbox Live Gold', 'No Expiration Date', 'Instant Digital Delivery', 'Multiple Denominations'],
+                    pricing: { '$10 Card': '$10.00', '$25 Card': '$25.00', '$50 Card': '$50.00', '$100 Card': '$100.00' },
+                    systemReqs: ['Xbox One', 'Xbox Series X|S', 'Windows 10/11', 'Microsoft Account'],
+                    rating: 4.8,
+                    downloads: 'N/A',
+                    developer: 'Microsoft Corporation'
+                },
+                'PS GIFT CARDS': {
+                    icon: 'fab fa-playstation',
+                    category: 'Console Gaming', 
+                    description: 'PlayStation Store gift cards unlock a vast library of games, DLCs, movies, and exclusive content for PS4 and PS5 consoles. Experience the latest AAA titles, indie gems, and PlayStation exclusives with instant digital delivery.',
+                    features: ['PS4 & PS5 Compatible', 'Exclusive PlayStation Games', 'Digital Movies & TV', 'PlayStation Plus Compatible', 'VR Content Access', 'No Expiration Date', 'Instant Delivery', 'Regional Flexibility'],
+                    pricing: { '$10 Card': '$10.00', '$25 Card': '$25.00', '$50 Card': '$50.00', '$100 Card': '$100.00' },
+                    systemReqs: ['PlayStation 4', 'PlayStation 5', 'PSN Account', 'Internet Connection'],
+                    rating: 4.7,
+                    downloads: 'N/A',
+                    developer: 'Sony Interactive Entertainment'
+                },
+                'YALLA LUDO': {
+                    icon: 'fas fa-dice',
+                    category: 'Board Game',
+                    description: 'Yalla Ludo brings the classic board game experience to the digital age with voice chat, social features, and competitive tournaments. Connect with friends and family while enjoying this timeless game.',
+                    features: ['Voice Chat Integration', 'Private Room Creation', 'Tournament Mode', 'Social Gaming Features', 'Classic Ludo Rules', 'Multiple Game Modes', 'Friend Invitations', 'Leaderboard System'],
+                    pricing: { '100 Coins': '$0.99', '550 Coins': '$4.99', '1200 Coins': '$9.99', '2500 Coins': '$19.99', '6500 Coins': '$49.99' },
+                    systemReqs: ['Android 4.1+', 'iOS 9.0+', '1GB RAM', '500MB Storage'],
+                    rating: 4.3,
+                    downloads: '100M+',
+                    developer: 'Aviva Sun'
+                },
+                'MOBILE LEGENDS': {
+                    icon: 'fas fa-sword',
+                    category: 'MOBA',
+                    description: 'Mobile Legends: Bang Bang is the ultimate mobile MOBA experience featuring fast-paced 5v5 battles, over 100 unique heroes, and competitive esports tournaments. Master your skills and climb the ranks.',
+                    features: ['5v5 Real-Time Battles', '100+ Unique Heroes', 'Multiple Game Modes', 'Esports Tournaments', 'Guild System', 'Skin Collection', 'Weekly Events', 'Cross-Platform Play'],
+                    pricing: { '86 Diamonds': '$0.99', '446 Diamonds': '$4.99', '963 Diamonds': '$9.99', '2010 Diamonds': '$19.99', '5532 Diamonds': '$49.99', '11532 Diamonds': '$99.99' },
+                    systemReqs: ['Android 4.0+', 'iOS 8.0+', '2GB RAM', '3GB Storage'],
+                    rating: 4.0,
+                    downloads: '1B+',
+                    developer: 'Moonton'
+                },
+                'FIFA MOBILE': {
+                    icon: 'fas fa-futbol',
+                    category: 'Sports',
+                    description: 'EA Sports FIFA Mobile brings authentic football action to your fingertips. Build your ultimate team, compete in live events, and experience the thrill of football with realistic gameplay and stunning graphics.',
+                    features: ['Ultimate Team Mode', 'Live Events', 'Head to Head Matches', 'League vs League', 'Real Player Motion', 'Weekly Updates', 'Seasonal Campaigns', 'Authentic Teams'],
+                    pricing: { '150 FIFA Points': '$0.99', '800 FIFA Points': '$4.99', '1600 FIFA Points': '$9.99', '4000 FIFA Points': '$19.99', '8000 FIFA Points': '$39.99', '16000 FIFA Points': '$79.99' },
+                    systemReqs: ['Android 4.1+', 'iOS 10.0+', '3GB RAM', '4GB Storage'],
+                    rating: 4.1,
+                    downloads: '500M+',
+                    developer: 'Electronic Arts'
+                },
+                'PES': {
+                    icon: 'fas fa-running',
+                    category: 'Sports',
+                    description: 'eFootball PES delivers the most realistic football simulation experience on mobile. Build your dream team with legendary players, compete in myClub mode, and enjoy authentic gameplay mechanics.',
+                    features: ['myClub Team Building', 'Legend Player Cards', 'Realistic Gameplay', 'Master League', 'Weekly Competitions', 'Skill Training', 'Live Updates', 'Official Licenses'],
+                    pricing: { '150 myClub Coins': '$0.99', '800 myClub Coins': '$4.99', '1700 myClub Coins': '$9.99', '3500 myClub Coins': '$19.99', '8500 myClub Coins': '$49.99', '18000 myClub Coins': '$99.99' },
+                    systemReqs: ['Android 5.0+', 'iOS 11.0+', '3GB RAM', '4GB Storage'],
+                    rating: 3.9,
+                    downloads: '500M+',
+                    developer: 'Konami Digital Entertainment'
+                }
+            };
+            
+            return defaults[gameName] || {
+                icon: 'fas fa-gamepad',
+                category: 'Gaming',
+                description: `Experience ${gameName} like never before with premium content, exclusive features, and enhanced gameplay. Join millions of players worldwide in this exciting gaming adventure.`,
+                features: ['Premium Content', 'Enhanced Gameplay', 'Exclusive Features', 'Regular Updates', 'Community Events', 'Cross-Platform Play', 'Achievement System', 'Customization Options'],
+                pricing: { 'Starter Pack': '$4.99', 'Premium Pack': '$9.99', 'Ultimate Pack': '$19.99' },
+                systemReqs: ['Android 5.0+', 'iOS 10.0+', '2GB RAM', '2GB Storage'],
+                rating: 4.2,
+                downloads: '1M+',
+                developer: 'Iron Dragons Studio'
+            };
+        }
+
+        // Go back to home page
+        function goBackHome() {
+            const homePage = document.getElementById('home-page');
+            const gamePagesContainer = document.getElementById('game-pages');
+            
+            homePage.style.display = 'block';
+            gamePagesContainer.innerHTML = '';
+            window.scrollTo(0, 0);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.querySelector('.newsletter-input').value;
+            if (email) {
+                alert('Thank you for subscribing! You will receive gaming updates and exclusive offers.');
+                document.querySelector('.newsletter-input').value = '';
+            }
+        });
+
+        // Wishlist functionality
+        let wishlist = [];
+        function toggleWishlist(gameName) {
+            const index = wishlist.indexOf(gameName);
+            if (index > -1) {
+                wishlist.splice(index, 1);
+            } else {
+                wishlist.push(gameName);
+            }
+            updateWishlistButtons();
+        }
+
+        function updateWishlistButtons() {
+            document.querySelectorAll('.wishlist-btn').forEach(btn => {
+                const gameCard = btn.closest('.game-card');
+                const gameName = gameCard.querySelector('.game-title').textContent;
+                if (wishlist.includes(gameName)) {
+                    btn.style.color = 'var(--accent-secondary)';
+                    btn.style.borderColor = 'var(--accent-secondary)';
+                } else {
+                    btn.style.color = 'var(--text-secondary)';
+                    btn.style.borderColor = 'var(--border-primary)';
+                }
+            });
+        }
+
+        // Add click handlers to wishlist buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.wishlist-btn')) {
+                const gameCard = e.target.closest('.game-card');
+                const gameName = gameCard.querySelector('.game-title').textContent;
+                toggleWishlist(gameName);
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.game-card, .feature-card, .stat-item');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Dynamic counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace(/[^\d]/g, ''));
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current-1 >= target) {
+                        counter.textContent = counter.textContent;
+                        clearInterval(timer);
+                    } else {
+                        const suffix = counter.textContent.replace(/[0-9]/g, '').replace('.', '');
+                        counter.textContent = Math.floor(current) + suffix;
+                    }
+                }, 20);
+            });
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statsObserver.observe(statsSection);
+        }
+
+        // Add some interactive particles effect for the hero section
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = 'var(--accent-primary)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.6';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            
+            document.body.appendChild(particle);
+            
+            const animation = particle.animate([
+                { transform: 'translateY(0px)', opacity: 0.6 },
+                { transform: `translateY(-${window.innerHeight + 100}px)`, opacity: 0 }
+            ], {
+                duration: 3000 + Math.random() * 2000,
+                easing: 'ease-out'
+            });
+            
+            animation.onfinish = () => particle.remove();
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 2000);
+    </script>
+    <script>
+            // Modern Gaming Dragon Effects
+        class ModernGamingDragon {
+            constructor() {
+                this.speeches = [
+                    "Ready to conquer the gaming realm?",
+                    "Unleash your gaming potential!",
+                    "Premium games await your command...",
+                    "Your adventure starts here, warrior!",
+                    "Forge your legend in the digital realm!",
+                    "The Iron Dragons welcome you!",
+                    "Power up your gaming experience!",
+                    "Victory awaits the brave!"
+                ];
+                this.currentSpeechIndex = 0;
+                this.init();
+            }
+            
+            init() {
+                this.createParticles();
+                this.setupDragonSpeech();
+                this.createGlitchEffect();
+                this.setupTypingEffect();
+            }
+            
+            // Create cyberpunk particles
+            createParticles() {
+                const heroSection = document.querySelector('.hero-section');
+                if (!heroSection) return;
+                
+                setInterval(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDuration = (3 + Math.random() * 3) + 's';
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    // Random colors for cyberpunk effect
+                    const colors = ['#00ffff', '#ff1493', '#8a2be2', '#00ff00'];
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.background = randomColor;
+                    particle.style.boxShadow = `0 0 10px ${randomColor}`;
+                    
+                    heroSection.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 6000);
+                }, 500);
+            }
+            
+            // Dragon speech system
+            setupDragonSpeech() {
+                const speechElement = document.getElementById('dragon-speech');
+                if (!speechElement) return;
+                
+                setInterval(() => {
+                    this.currentSpeechIndex = (this.currentSpeechIndex + 1) % this.speeches.length;
+                    this.typewriterEffect(speechElement, this.speeches[this.currentSpeechIndex]);
+                }, 5000);
+            }
+            
+            // Typewriter effect for dragon speech
+            typewriterEffect(element, text) {
+                element.textContent = '';
+                let i = 0;
+                
+                const type = () => {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(type, 50);
+                    }
+                };
+                
+                type();
+            }
+            
+            // Glitch effect for title
+            createGlitchEffect() {
+                const title = document.querySelector('.hero-title');
+                if (!title) return;
+                
+                setInterval(() => {
+                    title.style.animation = 'none';
+                    title.offsetHeight; // Trigger reflow
+                    title.style.animation = 'cyberpunkGlow 2s ease-in-out infinite alternate, glitchEffect 0.3s';
+                    
+                    setTimeout(() => {
+                        title.style.animation = 'cyberpunkGlow 2s ease-in-out infinite alternate';
+                    }, 300);
+                }, 8000);
+            }
+            
+            // Enhanced typing effect for subtitle
+            setupTypingEffect() {
+                const subtitle = document.querySelector('.hero-subtitle');
+                if (!subtitle) return;
+                
+                const fullText = "Get ready to level up your gaming experience!";
+                
+                setTimeout(() => {
+                    subtitle.style.animation = 'none';
+                    subtitle.textContent = '';
+                    
+                    let i = 0;
+                    const typeInterval = setInterval(() => {
+                        if (i < fullText.length) {
+                            subtitle.textContent += fullText.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(typeInterval);
+                            subtitle.style.animation = 'blinkCursor 1s infinite';
+                        }
+                    }, 50);
+                }, 2000);
+            }
+            
+            // Create energy bursts
+            createEnergyBurst() {
+                const dragonFrame = document.querySelector('.dragon-frame');
+                if (!dragonFrame) return;
+                
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const burst = document.createElement('div');
+                        burst.style.position = 'absolute';
+                        burst.style.width = '6px';
+                        burst.style.height = '6px';
+                        burst.style.background = 'radial-gradient(circle, #00ffff, #ff1493)';
+                        burst.style.borderRadius = '50%';
+                        burst.style.pointerEvents = 'none';
+                        burst.style.zIndex = '5';
+                        
+                        // Position around dragon area
+                        burst.style.left = (40 + Math.random() * 20) + '%';
+                        burst.style.top = (30 + Math.random() * 40) + '%';
+                        
+                        dragonFrame.appendChild(burst);
+                        
+                        // Animate burst
+                        const animation = burst.animate([
+                            { 
+                                transform: 'scale(0.5) translate(0px, 0px)', 
+                                opacity: 1 
+                            },
+                            { 
+                                transform: `scale(0) translate(${(Math.random() - 0.5) * 200}px, ${(Math.random() - 0.5) * 200}px)`, 
+                                opacity: 0 
+                            }
+                        ], {
+                            duration: 1500,
+                            easing: 'ease-out'
+                        });
+                        
+                        animation.onfinish = () => {
+                            if (burst.parentNode) {
+                                burst.parentNode.removeChild(burst);
+                            }
+                        };
+                    }, i * 200);
+                }
+            }
+        }
+
+        // Gaming UI Interactions
+        class GamingUI {
+            constructor() {
+                this.setupHoverEffects();
+                this.setupStatAnimations();
+            }
+            
+            setupHoverEffects() {
+                // Enhanced button hover effects
+                document.querySelectorAll('.cta-button').forEach(button => {
+                    button.addEventListener('mouseenter', (e) => {
+                        this.createButtonParticles(e.target);
+                    });
+                });
+                
+                // Stat pill interactions
+                document.querySelectorAll('.stat-pill').forEach(pill => {
+                    pill.addEventListener('mouseenter', (e) => {
+                        this.createStatGlow(e.target);
+                    });
+                });
+            }
+            
+            createButtonParticles(button) {
+                for (let i = 0; i <3; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.style.position = 'absolute';
+                        particle.style.width = '3px';
+                        particle.style.height = '3px';
+                        particle.style.background = '#00ffff';
+                        particle.style.borderRadius = '50%';
+                        particle.style.pointerEvents = 'none';
+                        particle.style.zIndex = '10';
+                        
+                        const rect = button.getBoundingClientRect();
+                        particle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+                        particle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+                        
+                        document.body.appendChild(particle);
+                        
+                        const animation = particle.animate([
+                            { transform: 'scale(1) translateY(0px)', opacity: 1 },
+                            { transform: 'scale(0) translateY(-30px)', opacity: 0 }
+                        ], {
+                            duration: 800,
+                            easing: 'ease-out'
+                        });
+                        
+                        animation.onfinish = () => {
+                            if (particle.parentNode) {
+                                particle.parentNode.removeChild(particle);
+                            }
+                        };
+                    }, i * 100);
+                }
+            }
+            
+            createStatGlow(stat) {
+                stat.style.boxShadow = '0 5px 30px rgba(0, 255, 255, 0.6)';
+                setTimeout(() => {
+                    stat.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.2)';
+                }, 300);
+            }
+            
+            setupStatAnimations() {
+                // Animate stats on load
+                const stats = document.querySelectorAll('.stat-pill');
+                stats.forEach((stat, index) => {
+                    stat.style.opacity = '0';
+                    stat.style.transform = 'translateY(30px)';
+                    
+                    setTimeout(() => {
+                        stat.style.transition = 'all 0.6s ease';
+                        stat.style.opacity = '1';
+                        stat.style.transform = 'translateY(0px)';
+                    }, (index + 1) * 200);
+                });
+            }
+        }
+
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const modernDragon = new ModernGamingDragon();
+            const gamingUI = new GamingUI();
+            
+            // Trigger energy bursts periodically
+            setInterval(() => {
+                modernDragon.createEnergyBurst();
+            }, 7000);
+            
+            // Initial energy burst
+            setTimeout(() => {
+                modernDragon.createEnergyBurst();
+            }, 3000);
+        });
+
+        // Add scroll-triggered animations
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('hero-visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const heroSection = document.querySelector('.hero-section');
+        if (heroSection) {
+            heroObserver.observe(heroSection);
+        }
+
+    </script>
+    <script>
+        // Cart functionality for main page
+        function updateCartCount() {
+            const cartData = localStorage.getItem('ironDragonsCart');
+            const cart = cartData ? JSON.parse(cartData) : [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            const cartCountElement = document.getElementById('cart-count');
+            if (cartCountElement) {
+                cartCountElement.textContent = count;
+                
+                // Add badge class if count > 0
+                const cartLink = document.getElementById('cart-link');
+                if (count > 0) {
+                    cartLink.style.color = 'var(--accent-secondary)';
+                } else {
+                    cartLink.style.color = '';
+                }
+            }
+        }
+
+        // Update cart count on page load
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+        window.addEventListener('storage', updateCartCount);
+    </script>
+
+</body>
+</html>
